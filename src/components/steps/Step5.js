@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import roleOptions from "../../assets/roleOptions";
 
-const Step5 = ({ handleStepChange, formData, handleChange, classes }) => {
+const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
 
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
+  const handleListItemClick = (event, code) => {
+    setSelectedIndex(code);
+    setFormData({
+      ...formData,
+      role: roleOptions.find((role) => role.code === code).name,
+    });
     handleStepChange();
-    // handleChange()
   };
 
   return (
@@ -23,30 +27,21 @@ const Step5 = ({ handleStepChange, formData, handleChange, classes }) => {
         question's response/s. ]
       </p>
       <div className={classes.root}>
-        {/* <div> */}
-        <List component="nav" aria-label="secondary mailbox folder">
-          <ListItem
-            button
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}
-          >
-            <ListItemText primary="A. Founder or CXO" />
-          </ListItem>
-          <ListItem
-            button
-            selected={selectedIndex === 2}
-            onClick={(event) => handleListItemClick(event, 2)}
-          >
-            <ListItemText primary="Product team" />
-          </ListItem>
-
-          <ListItem
-            button
-            selected={selectedIndex === 3}
-            onClick={(event) => handleListItemClick(event, 3)}
-          >
-            <ListItemText primary="Maketing team" />
-          </ListItem>
+        <List
+          component="nav"
+          aria-label="role"
+          style={{ backgroundColor: "white" }}
+        >
+          {roleOptions.map((role, index) => (
+            <ListItem
+              key={role.code}
+              button
+              selected={selectedIndex === role.code}
+              onClick={(event) => handleListItemClick(event, role.code)}
+            >
+              <ListItemText primary={index + 1 + " - " + role.name} />
+            </ListItem>
+          ))}
         </List>
       </div>
     </div>

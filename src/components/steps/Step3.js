@@ -18,7 +18,6 @@ const Step3 = ({ handleStepChange, formData, handleChange, classes }) => {
         <button className={classes.button} onClick={() => handleStepChange()}>
           Ok
         </button>
-        {/* <span className={classes.span}>Press Enter</span> */}
       </div>
     </div>
   );

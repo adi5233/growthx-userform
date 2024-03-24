@@ -7,12 +7,13 @@ import Step4 from "./steps/Step4";
 import Step5 from "./steps/Step5";
 import Step6 from "./steps/Step6";
 import Step7 from "./steps/Step7";
+import Step8 from "./steps/Step8";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
-    color: "white",
+    // maxWidth: 360,
+    // color: "white",
     // backgroundColor: "#2c496e",
     // "&:hover": {
     //   backgroundColor: "#102c50",
@@ -32,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffffffb3",
   },
   button: {
-    backgroundColor: "#2196f3",
+    backgroundColor: "#0077ff",
     color: "#fff",
     fontSize: "1.3rem",
     borderRadius: theme.spacing(1),
     outline: "none",
     cursor: "pointer",
     border: "none",
-    padding: "8px 12px 8px 12px",
+    padding: "0.7rem 1.3rem",
   },
   buttonContainer: {
     marginTop: theme.spacing(4),
@@ -82,8 +83,9 @@ const UserForm = ({ handleStepChange, step }) => {
     firstName: "",
     lastName: "",
     industry: "",
-    email: "",
     role: "",
+    goals: [],
+    email: "",
   });
   const classes = useStyles();
 
@@ -118,24 +120,34 @@ const UserForm = ({ handleStepChange, step }) => {
       formData={formData}
       handleChange={handleChange}
       classes={classes}
+      setFormData={setFormData}
     />,
     <Step5
       handleStepChange={handleStepChange}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
+      setFormData={setFormData}
     />,
     <Step6
       handleStepChange={handleStepChange}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
+      setFormData={setFormData}
     />,
     <Step7
       handleStepChange={handleStepChange}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
+    />,
+    <Step8
+      handleStepChange={handleStepChange}
+      formData={formData}
+      handleChange={handleChange}
+      classes={classes}
+      setFormData={setFormData}
     />,
   ];
 

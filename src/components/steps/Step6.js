@@ -1,85 +1,47 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
+import roleOptions from "../../assets/roleOptions";
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: theme.spacing(2),
-  },
-  heading: {
-    fontSize: "1.6rem",
-    margin: "1rem 0",
-    color: "#fff",
-  },
-  input: {
-    padding: theme.spacing(2),
-    backgroundColor: "transparent",
-    fontSize: "1.3rem",
-    outline: "none",
-    borderBottom: "2px solid #fff",
-    width: "100%",
-    color: "#fff",
-    border: "none",
-    "&:focus": {
-      borderColor: "#fff",
-    },
-  },
-  paragraph: {
-    fontSize: "1.3rem",
-    margin: "2rem 0",
-    color: "#ffffffb3",
-  },
-  buttonContainer: {
-    marginTop: theme.spacing(4),
-  },
-  button: {
-    backgroundColor: "#2196f3",
-    color: "#fff",
-    fontSize: "1.3rem",
-    padding: theme.spacing(1),
-    borderRadius: theme.spacing(1),
-    outline: "none",
-    cursor: "pointer",
-  },
-  span: {
-    fontSize: "1rem",
-    color: "#fff",
-    marginLeft: theme.spacing(2),
-  },
-  select: {
-    padding: theme.spacing(2.5),
-    backgroundColor: "transparent",
-    fontSize: "1.5rem",
-    outline: "none",
-    border: "none",
-    borderBottom: "2px solid #ccc",
-    width: "100%",
-    color: "#fff",
-    "&:focus": {
-      borderColor: "#fff",
-    },
-  },
-}));
+// const goals = [
+//   {
+//     value: "structuredApproachToGrowth",
+//     label: "Structured approach to growth",
+//   },
+//   { value: "buildAGrowthTeam", label: "Build a growth team" },
+//   {
+//     value: "connectWithLikeMindedPeople",
+//     label: "Connect with like-minded people",
+//   },
+// ];
 
-const Step6 = ({ handleStepChange, formData, handleChange, classes }) => {
-  const [checked, setChecked] = React.useState([0]);
+const Step6 = ({ handleStepChange, formData, classes, setFormData }) => {
+  const [checked, setChecked] = React.useState([]);
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
-
     if (currentIndex === -1) {
       newChecked.push(value);
     } else {
       newChecked.splice(currentIndex, 1);
     }
-
+    if (newChecked.length > 2) return;
     setChecked(newChecked);
+    setFormData({
+      ...formData,
+      goals: newChecked.map((goal) => {
+        return goals.find((g) => g.code === goal).name;
+      }),
+    });
   };
+
+  const goals = roleOptions.find(
+    (role) => (role.name = formData.industry)
+  ).goals;
 
   return (
     <div className={classes.container}>
@@ -87,33 +49,27 @@ const Step6 = ({ handleStepChange, formData, handleChange, classes }) => {
         5. what's your professional goal for the next 12 months?
       </p>
       <div>
-        <List className={classes.root}>
-          {[0, 1, 2, 3].map((value) => {
-            const labelId = `checkbox-list-label-${value}`;
-
+        <List className={classes.root} style={{ backgroundColor: "white" }}>
+          {goals.map((goal) => {
+            const labelId = `checkbox-list-label-${goal.code}`;
             return (
               <ListItem
-                key={value}
+                key={goal.code}
                 role={undefined}
                 dense
                 button
-                onClick={handleToggle(value)}
+                onClick={handleToggle(goal.code)}
               >
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
-                    checked={checked.indexOf(value) !== -1}
+                    checked={checked.indexOf(goal.code) !== -1}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ "aria-labelledby": labelId }}
                   />
                 </ListItemIcon>
-                <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-                {/* <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="comments">
-                          <CommentIcon />
-                        </IconButton>
-                      </ListItemSecondaryAction> */}
+                <ListItemText id={labelId} primary={`${goal.name}`} />
               </ListItem>
             );
           })}
