@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WarningIcon from "@material-ui/icons/Warning";
+import { motion } from "framer-motion";
 
 const Email = ({ nextStep, formData, handleChange, classes }) => {
   const [error, setError] = useState(null);
@@ -19,7 +20,12 @@ const Email = ({ nextStep, formData, handleChange, classes }) => {
     }
   };
   return (
-    <div className={classes.container}>
+    <motion.div
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 1 }}
+      className={classes.container}
+    >
       <p className={classes.heading}>6. Email you'd like to register with?</p>
       <p className={classes.paragraph}>
         We will keep all our communications with you through this email. Do
@@ -50,7 +56,7 @@ const Email = ({ nextStep, formData, handleChange, classes }) => {
           Ok
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

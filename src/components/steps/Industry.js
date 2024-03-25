@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import WarningIcon from "@material-ui/icons/Warning";
 import industryList from "../../assets/industryList";
+import { motion } from "framer-motion";
 
 const Industry = ({ nextStep, formData, classes, setFormData }) => {
   const [value, setValue] = useState(null);
@@ -25,7 +26,12 @@ const Industry = ({ nextStep, formData, classes, setFormData }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <motion.div
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 1 }}
+      className={classes.container}
+    >
       <p className={classes.heading}>3. What industry is your company in?</p>
       <p className={classes.paragraph}>
         We will personalize your learning experience accordingly
@@ -61,7 +67,7 @@ const Industry = ({ nextStep, formData, classes, setFormData }) => {
           Ok
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

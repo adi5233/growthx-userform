@@ -1,8 +1,14 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Acknowledgement = ({ nextStep, classes }) => {
   return (
-    <div className={classes.container}>
+    <motion.div
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 1 }}
+      className={classes.container}
+    >
       <p className={classes.heading}>Up-skilling requires time commitment</p>
       <p className={classes.paragraph}>
         The GrowthX experience is designed by keeping in mind the working hours
@@ -16,7 +22,7 @@ const Acknowledgement = ({ nextStep, classes }) => {
           I agree
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

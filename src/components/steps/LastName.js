@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WarningIcon from "@material-ui/icons/Warning";
+import { motion } from "framer-motion";
 
 const LastName = ({ nextStep, formData, handleChange, classes }) => {
   const [error, setError] = useState(null);
@@ -16,7 +17,12 @@ const LastName = ({ nextStep, formData, handleChange, classes }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <motion.div
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 1 }}
+      className={classes.container}
+    >
       <p className={classes.heading}>2. What's your last name?</p>
       <div>
         <input
@@ -39,7 +45,7 @@ const LastName = ({ nextStep, formData, handleChange, classes }) => {
           Ok
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

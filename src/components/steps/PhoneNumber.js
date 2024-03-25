@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import WarningIcon from "@material-ui/icons/Warning";
+import { motion } from "framer-motion";
 
 const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
   const [value, setValue] = useState();
@@ -23,7 +24,12 @@ const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <motion.div
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 1 }}
+      className={classes.container}
+    >
       <p className={classes.heading}>7. Your phone number</p>
       <p className={classes.paragraph}>
         We won't call you unless it is absolutely required to process your
@@ -59,7 +65,7 @@ const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
           Submit
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

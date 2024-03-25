@@ -6,6 +6,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import roleOptions from "../../assets/roleOptions";
 import WarningIcon from "@material-ui/icons/Warning";
+import { motion } from "framer-motion";
 
 const Goals = ({ nextStep, formData, classes, setFormData }) => {
   const [checked, setChecked] = useState([]);
@@ -45,7 +46,12 @@ const Goals = ({ nextStep, formData, classes, setFormData }) => {
   ).goals;
 
   return (
-    <div className={classes.container}>
+    <motion.div
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 1 }}
+      className={classes.container}
+    >
       <p className={classes.heading}>
         5. what's your professional goal for the next 12 months?
       </p>
@@ -87,7 +93,7 @@ const Goals = ({ nextStep, formData, classes, setFormData }) => {
           Ok
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

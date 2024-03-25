@@ -4,6 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import roleOptions from "../../assets/roleOptions";
 import WarningIcon from "@material-ui/icons/Warning";
+import { motion } from "framer-motion";
 
 const Role = ({ nextStep, formData, classes, setFormData }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -30,7 +31,12 @@ const Role = ({ nextStep, formData, classes, setFormData }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <motion.div
+      initial={{ opacity: 0, y: 300 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 1 }}
+      className={classes.container}
+    >
       <p className={classes.heading}>4. Your role in your company?</p>
       <p className={classes.paragraph}>
         We want to understand how you spend your time right now.
@@ -68,7 +74,7 @@ const Role = ({ nextStep, formData, classes, setFormData }) => {
           Ok
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
