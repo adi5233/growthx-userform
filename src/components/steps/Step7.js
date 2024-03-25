@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import WarningIcon from "@material-ui/icons/Warning";
 
 const Step7 = ({ handleStepChange, formData, handleChange, classes }) => {
+  const [error, setError] = useState(null);
+
+  const handleSubmit = () => {
+    const { email } = formData;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email === "") {
+      setError("Please fill this in");
+      return;
+    } else if (!emailRegex.test(email)) {
+      setError("Hmm... that email doesn't look right");
+      return;
+    } else {
+      setError(null);
+      handleStepChange();
+    }
+  };
   return (
     <div className={classes.container}>
       <p className={classes.heading}>6. Email you'd like to register with?</p>
@@ -22,11 +39,16 @@ const Step7 = ({ handleStepChange, formData, handleChange, classes }) => {
           placeholder="Type your answer here..."
         />
       </div>
+      {error && (
+        <div className={classes.errorMessage}>
+          <WarningIcon size="small" className={classes.errorIcon} />
+          <span>{error}</span>
+        </div>
+      )}
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleStepChange()}>
+        <button className={classes.button} onClick={() => handleSubmit()}>
           Ok
         </button>
-        <span className={classes.span}>Press Enter</span>
       </div>
     </div>
   );

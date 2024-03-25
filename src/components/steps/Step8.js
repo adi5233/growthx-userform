@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import WarningIcon from "@material-ui/icons/Warning";
 
 const Step8 = ({ handleStepChange, formData, handleChange, classes }) => {
   const [value, setValue] = useState();
+  const [error, setError] = useState(null);
+
+  const handleSubmit = () => {
+    if (!value) {
+      setError("Please fill this in");
+      return;
+    } else {
+      setError(null);
+      handleStepChange();
+    }
+  };
+
   const handlePhoneInputChange = (value) => {
     setValue(value);
   };
+
   return (
     <div className={classes.container}>
       <p className={classes.heading}>7. Your phone number</p>
@@ -17,7 +31,7 @@ const Step8 = ({ handleStepChange, formData, handleChange, classes }) => {
       <div style={{ backgroundColor: "white", padding: "0.5rem" }}>
         <PhoneInput
           international
-          defaultCountry="RU"
+          defaultCountry="IN"
           value={value}
           onChange={handlePhoneInputChange}
           inputProps={{
@@ -33,9 +47,15 @@ const Step8 = ({ handleStepChange, formData, handleChange, classes }) => {
           }}
         />
       </div>
+      {error && (
+        <div className={classes.errorMessage}>
+          <WarningIcon size="small" className={classes.errorIcon} />
+          <span>{error}</span>
+        </div>
+      )}
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleStepChange()}>
-          Ok
+        <button className={classes.button} onClick={() => handleSubmit()}>
+          Submit
         </button>
       </div>
     </div>

@@ -15,7 +15,6 @@ const Step1 = ({ handleStepChange, classes }) => {
         <button className={classes.button} onClick={() => handleStepChange()}>
           I agree
         </button>
-        {/* <span className={classes.span}>Press Enter</span> */}
       </div>
     </div>
   );

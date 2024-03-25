@@ -1,25 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import roleOptions from "../../assets/roleOptions";
-
-// const goals = [
-//   {
-//     value: "structuredApproachToGrowth",
-//     label: "Structured approach to growth",
-//   },
-//   { value: "buildAGrowthTeam", label: "Build a growth team" },
-//   {
-//     value: "connectWithLikeMindedPeople",
-//     label: "Connect with like-minded people",
-//   },
-// ];
+import WarningIcon from "@material-ui/icons/Warning";
 
 const Step6 = ({ handleStepChange, formData, classes, setFormData }) => {
-  const [checked, setChecked] = React.useState([]);
+  const [checked, setChecked] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -37,6 +27,17 @@ const Step6 = ({ handleStepChange, formData, classes, setFormData }) => {
         return goals.find((g) => g.code === goal).name;
       }),
     });
+  };
+
+  const handleSubmit = () => {
+    const { goals } = formData;
+    if (goals.length === 0) {
+      setError("Oops! Please make a selection");
+      return;
+    } else {
+      setError(null);
+      handleStepChange();
+    }
   };
 
   const goals = roleOptions.find(
@@ -75,11 +76,16 @@ const Step6 = ({ handleStepChange, formData, classes, setFormData }) => {
           })}
         </List>
       </div>
+      {error && (
+        <div className={classes.errorMessage}>
+          <WarningIcon size="small" className={classes.errorIcon} />
+          <span>{error}</span>
+        </div>
+      )}
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleStepChange()}>
+        <button className={classes.button} onClick={() => handleSubmit()}>
           Ok
         </button>
-        {/* <span className={classes.span}>Press Enter</span> */}
       </div>
     </div>
   );

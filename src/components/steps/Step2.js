@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import WarningIcon from "@material-ui/icons/Warning";
 
 const Step2 = ({ handleStepChange, formData, handleChange, classes }) => {
+  const [error, setError] = useState(null);
+
+  const handleSubmit = () => {
+    const { firstName } = formData;
+    if (firstName === "") {
+      setError("Please fill this in");
+      return;
+    } else {
+      setError(null);
+      handleStepChange();
+    }
+  };
+
   return (
     <div className={classes.container}>
       <p className={classes.heading}>1 What's your first name?</p>
@@ -14,11 +28,16 @@ const Step2 = ({ handleStepChange, formData, handleChange, classes }) => {
           placeholder="Type your answer here..."
         />
       </div>
+      {error && (
+        <div className={classes.errorMessage}>
+          <WarningIcon size="small" className={classes.errorIcon} />
+          <span>{error}</span>
+        </div>
+      )}
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleStepChange()}>
+        <button className={classes.button} onClick={() => handleSubmit()}>
           Ok
         </button>
-        {/* <span className={classes.span}>Press Enter</span> */}
       </div>
     </div>
   );

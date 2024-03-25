@@ -3,9 +3,11 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import roleOptions from "../../assets/roleOptions";
+import WarningIcon from "@material-ui/icons/Warning";
 
 const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
+  const [error, setError] = useState(null);
 
   const handleListItemClick = (event, code) => {
     setSelectedIndex(code);
@@ -14,6 +16,17 @@ const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
       role: roleOptions.find((role) => role.code === code).name,
     });
     handleStepChange();
+  };
+
+  const handleSubmit = () => {
+    const { role } = formData;
+    if (role === "") {
+      setError("Oops! Please make a selection");
+      return;
+    } else {
+      setError(null);
+      handleStepChange();
+    }
   };
 
   return (
@@ -43,6 +56,17 @@ const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
             </ListItem>
           ))}
         </List>
+      </div>
+      {error && (
+        <div className={classes.errorMessage}>
+          <WarningIcon size="small" className={classes.errorIcon} />
+          <span>{error}</span>
+        </div>
+      )}
+      <div className={classes.buttonContainer}>
+        <button className={classes.button} onClick={() => handleSubmit()}>
+          Ok
+        </button>
       </div>
     </div>
   );

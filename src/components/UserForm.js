@@ -76,6 +76,19 @@ const useStyles = makeStyles((theme) => ({
       borderColor: "#fff",
     },
   },
+  errorMessage: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    color: "red",
+    backgroundColor: "white",
+    padding: "10px",
+    marginTop: "10px",
+  },
+  errorIcon: {
+    marginRight: "5px",
+    width: "1.2rem",
+  },
 }));
 
 const UserForm = ({ handleStepChange, step }) => {
@@ -89,7 +102,7 @@ const UserForm = ({ handleStepChange, step }) => {
   });
   const classes = useStyles();
 
-  console.log(formData);
+  // console.log(formData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import WarningIcon from "@material-ui/icons/Warning";
 
 const industry_list = [
   "Accounting",
@@ -156,9 +157,22 @@ const industry_list = [
 
 const Step4 = ({ handleStepChange, formData, classes, setFormData }) => {
   const [value, setValue] = useState(null);
+  const [error, setError] = useState(null);
+
   const handleAutoCompleteChange = (newValue) => {
     setValue(newValue);
     setFormData({ ...formData, industry: newValue });
+  };
+
+  const handleSubmit = () => {
+    const { industry } = formData;
+    if (industry === "") {
+      setError("Oops! Please make a selection");
+      return;
+    } else {
+      setError(null);
+      handleStepChange();
+    }
   };
 
   return (
@@ -187,8 +201,14 @@ const Step4 = ({ handleStepChange, formData, classes, setFormData }) => {
           )}
         />
       </div>
+      {error && (
+        <div className={classes.errorMessage}>
+          <WarningIcon size="small" className={classes.errorIcon} />
+          <span>{error}</span>
+        </div>
+      )}
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleStepChange()}>
+        <button className={classes.button} onClick={() => handleSubmit()}>
           Ok
         </button>
       </div>
