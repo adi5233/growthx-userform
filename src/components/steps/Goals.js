@@ -7,7 +7,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import roleOptions from "../../assets/roleOptions";
 import WarningIcon from "@material-ui/icons/Warning";
 
-const Step6 = ({ handleStepChange, formData, classes, setFormData }) => {
+const Goals = ({ nextStep, formData, classes, setFormData }) => {
   const [checked, setChecked] = useState([]);
   const [error, setError] = useState(null);
 
@@ -36,7 +36,7 @@ const Step6 = ({ handleStepChange, formData, classes, setFormData }) => {
       return;
     } else {
       setError(null);
-      handleStepChange();
+      nextStep();
     }
   };
 
@@ -91,4 +91,4 @@ const Step6 = ({ handleStepChange, formData, classes, setFormData }) => {
   );
 };
 
-export default Step6;
+export default Goals;

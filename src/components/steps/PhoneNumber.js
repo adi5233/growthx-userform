@@ -3,17 +3,18 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import WarningIcon from "@material-ui/icons/Warning";
 
-const Step8 = ({ handleStepChange, formData, handleChange, classes }) => {
+const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
   const [value, setValue] = useState();
   const [error, setError] = useState(null);
 
-  const handleSubmit = () => {
+  const handleProceed = () => {
     if (!value) {
       setError("Please fill this in");
       return;
     } else {
       setError(null);
-      handleStepChange();
+      nextStep();
+      handleSubmit({ ...formData, phoneNumber: value });
     }
   };
 
@@ -54,7 +55,7 @@ const Step8 = ({ handleStepChange, formData, handleChange, classes }) => {
         </div>
       )}
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleSubmit()}>
+        <button className={classes.button} onClick={() => handleProceed()}>
           Submit
         </button>
       </div>
@@ -62,4 +63,4 @@ const Step8 = ({ handleStepChange, formData, handleChange, classes }) => {
   );
 };
 
-export default Step8;
+export default PhoneNumber;

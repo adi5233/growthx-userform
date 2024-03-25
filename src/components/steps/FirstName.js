@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import WarningIcon from "@material-ui/icons/Warning";
 
-const Step3 = ({ handleStepChange, formData, handleChange, classes }) => {
+const FirstName = ({ nextStep, formData, handleChange, classes }) => {
   const [error, setError] = useState(null);
 
   const handleSubmit = () => {
-    const { lastName } = formData;
-    if (lastName === "") {
+    const { firstName } = formData;
+    if (firstName === "") {
       setError("Please fill this in");
       return;
     } else {
       setError(null);
-      handleStepChange();
+      nextStep();
     }
   };
 
   return (
     <div className={classes.container}>
-      <p className={classes.heading}>2. What's your last name?</p>
+      <p className={classes.heading}>1 What's your first name?</p>
       <div>
         <input
           type="text"
-          name="lastName"
+          name="firstName"
           value={formData.name}
           onChange={handleChange}
           className={classes.input}
@@ -43,4 +43,4 @@ const Step3 = ({ handleStepChange, formData, handleChange, classes }) => {
   );
 };
 
-export default Step3;
+export default FirstName;

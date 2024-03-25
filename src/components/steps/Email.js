@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import WarningIcon from "@material-ui/icons/Warning";
 
-const Step7 = ({ handleStepChange, formData, handleChange, classes }) => {
+const Email = ({ nextStep, formData, handleChange, classes }) => {
   const [error, setError] = useState(null);
 
   const handleSubmit = () => {
@@ -15,7 +15,7 @@ const Step7 = ({ handleStepChange, formData, handleChange, classes }) => {
       return;
     } else {
       setError(null);
-      handleStepChange();
+      nextStep();
     }
   };
   return (
@@ -54,4 +54,4 @@ const Step7 = ({ handleStepChange, formData, handleChange, classes }) => {
   );
 };
 
-export default Step7;
+export default Email;

@@ -32,7 +32,7 @@ const App = () => {
   const [step, setStep] = useState(0);
   const classes = useStyles();
 
-  const handleStepChange = () => {
+  const nextStep = () => {
     setStep(step + 1);
   };
 
@@ -44,7 +44,7 @@ const App = () => {
       </div>
       <div className={classes.formContainer}>
         <div className={classes.formWrapper}>
-          <UserForm handleStepChange={handleStepChange} step={step} />
+          <UserForm nextStep={nextStep} step={step} />
         </div>
       </div>
     </div>

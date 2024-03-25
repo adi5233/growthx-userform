@@ -5,7 +5,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import roleOptions from "../../assets/roleOptions";
 import WarningIcon from "@material-ui/icons/Warning";
 
-const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
+const Role = ({ nextStep, formData, classes, setFormData }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [error, setError] = useState(null);
 
@@ -15,7 +15,7 @@ const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
       ...formData,
       role: roleOptions.find((role) => role.code === code).name,
     });
-    handleStepChange();
+    nextStep();
   };
 
   const handleSubmit = () => {
@@ -25,7 +25,7 @@ const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
       return;
     } else {
       setError(null);
-      handleStepChange();
+      nextStep();
     }
   };
 
@@ -72,4 +72,4 @@ const Step5 = ({ handleStepChange, formData, classes, setFormData }) => {
   );
 };
 
-export default Step5;
+export default Role;

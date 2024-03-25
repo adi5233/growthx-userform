@@ -1,6 +1,6 @@
 import React from "react";
 
-const Step1 = ({ handleStepChange, classes }) => {
+const Acknowledgement = ({ nextStep, classes }) => {
   return (
     <div className={classes.container}>
       <p className={classes.heading}>Up-skilling requires time commitment</p>
@@ -12,7 +12,7 @@ const Step1 = ({ handleStepChange, classes }) => {
       <p className={classes.paragraph}>- 6 hours/week for the first 5 weeks</p>
       <p className={classes.paragraph}>- 15 hours/week for the last 3 weeks</p>
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleStepChange()}>
+        <button className={classes.button} onClick={() => nextStep()}>
           I agree
         </button>
       </div>
@@ -20,4 +20,4 @@ const Step1 = ({ handleStepChange, classes }) => {
   );
 };
 
-export default Step1;
+export default Acknowledgement;

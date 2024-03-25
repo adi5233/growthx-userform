@@ -1,23 +1,18 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Step1 from "./steps/Step1";
-import Step2 from "./steps/Step2";
-import Step3 from "./steps/Step3";
-import Step4 from "./steps/Step4";
-import Step5 from "./steps/Step5";
-import Step6 from "./steps/Step6";
-import Step7 from "./steps/Step7";
-import Step8 from "./steps/Step8";
+import Acknowledgement from "./steps/Acknowledgement";
+import FirstName from "./steps/FirstName";
+import LastName from "./steps/LastName";
+import Industry from "./steps/Industry";
+import Role from "./steps/Role";
+import Goals from "./steps/Goals";
+import Email from "./steps/Email";
+import PhoneNumber from "./steps/PhoneNumber";
+import Completion from "./steps/Completion";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    // maxWidth: 360,
-    // color: "white",
-    // backgroundColor: "#2c496e",
-    // "&:hover": {
-    //   backgroundColor: "#102c50",
-    // },
   },
   container: {
     padding: theme.spacing(2),
@@ -91,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserForm = ({ handleStepChange, step }) => {
+const UserForm = ({ nextStep, step }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -99,69 +94,68 @@ const UserForm = ({ handleStepChange, step }) => {
     role: "",
     goals: [],
     email: "",
+    phoneNumber: "",
   });
   const classes = useStyles();
-
-  // console.log(formData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (formData) => {
     console.log(formData);
   };
 
   const formSteps = [
-    <Step1 handleStepChange={handleStepChange} classes={classes} />,
-    <Step2
-      handleStepChange={handleStepChange}
+    <Acknowledgement nextStep={nextStep} classes={classes} />,
+    <FirstName
+      nextStep={nextStep}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
     />,
-    <Step3
-      handleStepChange={handleStepChange}
+    <LastName
+      nextStep={nextStep}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
     />,
-    <Step4
-      handleStepChange={handleStepChange}
-      formData={formData}
-      handleChange={handleChange}
-      classes={classes}
-      setFormData={setFormData}
-    />,
-    <Step5
-      handleStepChange={handleStepChange}
+    <Industry
+      nextStep={nextStep}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
       setFormData={setFormData}
     />,
-    <Step6
-      handleStepChange={handleStepChange}
+    <Role
+      nextStep={nextStep}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
       setFormData={setFormData}
     />,
-    <Step7
-      handleStepChange={handleStepChange}
-      formData={formData}
-      handleChange={handleChange}
-      classes={classes}
-    />,
-    <Step8
-      handleStepChange={handleStepChange}
+    <Goals
+      nextStep={nextStep}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
       setFormData={setFormData}
     />,
+    <Email
+      nextStep={nextStep}
+      formData={formData}
+      handleChange={handleChange}
+      classes={classes}
+    />,
+    <PhoneNumber
+      nextStep={nextStep}
+      formData={formData}
+      classes={classes}
+      setFormData={setFormData}
+      handleSubmit={handleSubmit}
+    />,
+    <Completion classes={classes} />,
   ];
 
   return <form onSubmit={handleSubmit}>{formSteps[step]}</form>;
