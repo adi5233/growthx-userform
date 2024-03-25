@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import WarningIcon from "@material-ui/icons/Warning";
 import { motion } from "framer-motion";
 
-const LastName = ({ nextStep, formData, handleChange, classes }) => {
+const LastName = ({ nextStep, formData, handleChange, classes, step }) => {
   const [error, setError] = useState(null);
 
   const handleSubmit = () => {
@@ -23,7 +23,9 @@ const LastName = ({ nextStep, formData, handleChange, classes }) => {
       transition={{ delay: 0.5, duration: 1 }}
       className={classes.container}
     >
-      <p className={classes.heading}>2. What's your last name?</p>
+      <p className={classes.heading}>
+        {step}. and your last name, {formData.firstName}?
+      </p>
       <div>
         <input
           type="text"

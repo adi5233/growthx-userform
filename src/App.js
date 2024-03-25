@@ -9,23 +9,25 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     width: "100vw",
     backgroundColor: "#000000",
+    display: "flex",
+    flexDirection: "column", // Arrange children vertically
+    alignItems: "center", // Center children horizontally
   },
   headerContainer: {
-    // height: "20vh",
+    height: "auto",
+    width: "100%",
   },
   formContainer: {
+    flex: 1,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "60vw",
-    margin: "auto",
   },
   formWrapper: {
-    // margin: "3rem 2rem",
-    width: "90vw",
+    width: "50vw",
   },
   "@media (max-width: 768px)": {
-    formContainer: {
+    formWrapper: {
       width: "90vw",
     },
   },

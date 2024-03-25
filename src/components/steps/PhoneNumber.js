@@ -4,7 +4,7 @@ import "react-phone-input-2/lib/style.css";
 import WarningIcon from "@material-ui/icons/Warning";
 import { motion } from "framer-motion";
 
-const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
+const PhoneNumber = ({ nextStep, formData, classes, handleSubmit, step }) => {
   const [value, setValue] = useState();
   const [error, setError] = useState(null);
 
@@ -30,7 +30,7 @@ const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
       transition={{ delay: 0.5, duration: 1 }}
       className={classes.container}
     >
-      <p className={classes.heading}>7. Your phone number</p>
+      <p className={classes.heading}>{step}. Your phone number</p>
       <p className={classes.paragraph}>
         We won't call you unless it is absolutely required to process your
         application.

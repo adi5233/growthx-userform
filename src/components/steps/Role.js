@@ -6,7 +6,7 @@ import roleOptions from "../../assets/roleOptions";
 import WarningIcon from "@material-ui/icons/Warning";
 import { motion } from "framer-motion";
 
-const Role = ({ nextStep, formData, classes, setFormData }) => {
+const Role = ({ nextStep, formData, classes, setFormData, step }) => {
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [error, setError] = useState(null);
 
@@ -37,7 +37,7 @@ const Role = ({ nextStep, formData, classes, setFormData }) => {
       transition={{ delay: 0.5, duration: 1 }}
       className={classes.container}
     >
-      <p className={classes.heading}>4. Your role in your company?</p>
+      <p className={classes.heading}>{step}. Your role in your company?</p>
       <p className={classes.paragraph}>
         We want to understand how you spend your time right now.
       </p>

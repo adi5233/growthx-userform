@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import WarningIcon from "@material-ui/icons/Warning";
 import { motion } from "framer-motion";
 
-const Email = ({ nextStep, formData, handleChange, classes }) => {
+const Email = ({ nextStep, formData, handleChange, classes, step }) => {
   const [error, setError] = useState(null);
 
   const handleSubmit = () => {
@@ -26,7 +26,9 @@ const Email = ({ nextStep, formData, handleChange, classes }) => {
       transition={{ delay: 0.5, duration: 1 }}
       className={classes.container}
     >
-      <p className={classes.heading}>6. Email you'd like to register with?</p>
+      <p className={classes.heading}>
+        {step}. Email you'd like to register with?
+      </p>
       <p className={classes.paragraph}>
         We will keep all our communications with you through this email. Do
         check your spam inbox if you can't find our application received email.

@@ -5,7 +5,7 @@ import WarningIcon from "@material-ui/icons/Warning";
 import industryList from "../../assets/industryList";
 import { motion } from "framer-motion";
 
-const Industry = ({ nextStep, formData, classes, setFormData }) => {
+const Industry = ({ nextStep, formData, classes, setFormData, step }) => {
   const [value, setValue] = useState(null);
   const [error, setError] = useState(null);
 
@@ -32,7 +32,9 @@ const Industry = ({ nextStep, formData, classes, setFormData }) => {
       transition={{ delay: 0.5, duration: 1 }}
       className={classes.container}
     >
-      <p className={classes.heading}>3. What industry is your company in?</p>
+      <p className={classes.heading}>
+        {step}. What industry is your company in?
+      </p>
       <p className={classes.paragraph}>
         We will personalize your learning experience accordingly
       </p>

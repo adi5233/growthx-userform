@@ -18,19 +18,19 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   heading: {
-    fontSize: "1.6rem",
+    fontSize: "1.4rem",
     margin: "1rem 0",
     color: "#fff",
   },
   paragraph: {
-    fontSize: "1.3rem",
+    fontSize: "1.2rem",
     margin: "2rem 0",
     color: "#ffffffb3",
   },
   button: {
     backgroundColor: "#0077ff",
     color: "#fff",
-    fontSize: "1.3rem",
+    fontSize: "1.2rem",
     borderRadius: theme.spacing(1),
     outline: "none",
     cursor: "pointer",
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   input: {
     padding: theme.spacing(1),
     backgroundColor: "transparent",
-    fontSize: "1.3rem",
+    fontSize: "1.2rem",
     outline: "none",
     borderBottom: "2px solid #fff",
     width: "100%",
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   select: {
     padding: theme.spacing(1),
     backgroundColor: "transparent",
-    fontSize: "1.3rem",
+    fontSize: "1.2rem",
     outline: "none",
     border: "none",
     borderBottom: "2px solid #ccc",
@@ -115,12 +115,14 @@ const UserForm = ({ nextStep, step }) => {
       formData={formData}
       handleChange={handleChange}
       classes={classes}
+      step={step}
     />,
     <LastName
       nextStep={nextStep}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
+      step={step}
     />,
     <Industry
       nextStep={nextStep}
@@ -128,6 +130,7 @@ const UserForm = ({ nextStep, step }) => {
       handleChange={handleChange}
       classes={classes}
       setFormData={setFormData}
+      step={step}
     />,
     <Role
       nextStep={nextStep}
@@ -135,6 +138,7 @@ const UserForm = ({ nextStep, step }) => {
       handleChange={handleChange}
       classes={classes}
       setFormData={setFormData}
+      step={step}
     />,
     <Goals
       nextStep={nextStep}
@@ -142,12 +146,14 @@ const UserForm = ({ nextStep, step }) => {
       handleChange={handleChange}
       classes={classes}
       setFormData={setFormData}
+      step={step}
     />,
     <Email
       nextStep={nextStep}
       formData={formData}
       handleChange={handleChange}
       classes={classes}
+      step={step}
     />,
     <PhoneNumber
       nextStep={nextStep}
@@ -155,6 +161,7 @@ const UserForm = ({ nextStep, step }) => {
       classes={classes}
       setFormData={setFormData}
       handleSubmit={handleSubmit}
+      step={step}
     />,
     <Completion classes={classes} />,
   ];

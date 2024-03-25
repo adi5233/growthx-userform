@@ -8,7 +8,7 @@ import roleOptions from "../../assets/roleOptions";
 import WarningIcon from "@material-ui/icons/Warning";
 import { motion } from "framer-motion";
 
-const Goals = ({ nextStep, formData, classes, setFormData }) => {
+const Goals = ({ nextStep, formData, classes, setFormData, step }) => {
   const [checked, setChecked] = useState([]);
   const [error, setError] = useState(null);
 
@@ -25,7 +25,7 @@ const Goals = ({ nextStep, formData, classes, setFormData }) => {
     setFormData({
       ...formData,
       goals: newChecked.map((goal) => {
-        return goals.find((g) => g.code === goal).name;
+        return goalOptions.find((g) => g.code === goal).name;
       }),
     });
   };
@@ -40,9 +40,8 @@ const Goals = ({ nextStep, formData, classes, setFormData }) => {
       nextStep();
     }
   };
-
-  const goals = roleOptions.find(
-    (role) => (role.name = formData.industry)
+  const goalOptions = roleOptions.find(
+    (role) => role.name === formData.role
   ).goals;
 
   return (
@@ -53,11 +52,11 @@ const Goals = ({ nextStep, formData, classes, setFormData }) => {
       className={classes.container}
     >
       <p className={classes.heading}>
-        5. what's your professional goal for the next 12 months?
+        {step}. what's your professional goal for the next 12 months?
       </p>
       <div>
         <List className={classes.root} style={{ backgroundColor: "white" }}>
-          {goals.map((goal) => {
+          {goalOptions.map((goal) => {
             const labelId = `checkbox-list-label-${goal.code}`;
             return (
               <ListItem
