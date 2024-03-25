@@ -17,9 +17,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    width: "60vw",
+    margin: "auto",
   },
   formWrapper: {
-    margin: "3rem 2rem",
+    // margin: "3rem 2rem",
+    width: "90vw",
+  },
+  "@media (max-width: 768px)": {
+    formContainer: {
+      width: "90vw",
+    },
   },
 }));
 
