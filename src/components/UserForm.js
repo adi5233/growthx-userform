@@ -103,7 +103,8 @@ const UserForm = ({ nextStep, step }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (formData) => {
+  const handleSubmit = (e, formData) => {
+    e.preventDefault();
     console.log(formData);
   };
 

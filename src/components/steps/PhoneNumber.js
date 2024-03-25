@@ -7,14 +7,14 @@ const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
   const [value, setValue] = useState();
   const [error, setError] = useState(null);
 
-  const handleProceed = () => {
+  const handleProceed = (e) => {
     if (!value) {
       setError("Please fill this in");
       return;
     } else {
       setError(null);
       nextStep();
-      handleSubmit({ ...formData, phoneNumber: value });
+      handleSubmit(e, { ...formData, phoneNumber: value });
     }
   };
 
@@ -55,7 +55,7 @@ const PhoneNumber = ({ nextStep, formData, classes, handleSubmit }) => {
         </div>
       )}
       <div className={classes.buttonContainer}>
-        <button className={classes.button} onClick={() => handleProceed()}>
+        <button className={classes.button} onClick={handleProceed}>
           Submit
         </button>
       </div>
