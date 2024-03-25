@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     alignItems: "center",
-    padding: "3rem",
+    padding: "2rem",
   },
   logo: {
     width: "150px",

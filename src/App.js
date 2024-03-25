@@ -16,15 +16,10 @@ const useStyles = makeStyles((theme) => ({
   formContainer: {
     display: "flex",
     justifyContent: "center",
-    flex: 1,
+    alignItems: "center",
   },
   formWrapper: {
-    margin: "40px 20px", // Adjust spacing as needed
-    width: "90vw",
-    [theme.breakpoints.up("md")]: {
-      width: "50vw",
-      margin: "20px 10px", // Adjust spacing as needed
-    },
+    margin: "3rem 2rem",
   },
 }));
 
