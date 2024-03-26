@@ -54,6 +54,7 @@ const Goals = ({ nextStep, formData, classes, setFormData, step }) => {
       <p className={classes.heading}>
         {step}. what's your professional goal for the next 12 months?
       </p>
+      <p className={classes.paragraph}>Select maximum two options.</p>
       <div>
         <List className={classes.root} style={{ backgroundColor: "white" }}>
           {goalOptions.map((goal) => {
