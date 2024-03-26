@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import WarningIcon from "@material-ui/icons/Warning";
-import industryList from "../../assets/industryList";
+import industryList from "../../data/industryList";
 import { motion } from "framer-motion";
 
 const Industry = ({ nextStep, formData, classes, setFormData, step }) => {
@@ -29,7 +29,7 @@ const Industry = ({ nextStep, formData, classes, setFormData, step }) => {
     <motion.div
       initial={{ opacity: 0, y: 300 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 1 }}
+      transition={{ delay: 0.1, duration: 0.5 }}
       className={classes.container}
     >
       <p className={classes.heading}>

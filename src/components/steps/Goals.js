@@ -4,7 +4,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
-import roleOptions from "../../assets/roleOptions";
+import roleOptions from "../../data/roleOptions";
 import WarningIcon from "@material-ui/icons/Warning";
 import { motion } from "framer-motion";
 
@@ -48,7 +48,7 @@ const Goals = ({ nextStep, formData, classes, setFormData, step }) => {
     <motion.div
       initial={{ opacity: 0, y: 300 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5, duration: 1 }}
+      transition={{ delay: 0.1, duration: 0.5 }}
       className={classes.container}
     >
       <p className={classes.heading}>

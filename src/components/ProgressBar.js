@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+const totalSteps = 7;
+
 const useStyles = makeStyles((theme) => ({
   progressBar: {
     height: "5px",
@@ -13,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 const ProgressBar = ({ step }) => {
   const classes = useStyles();
 
-  const width = step === 0 ? "0%" : `${(step / 7) * 100}%`;
+  const width = step === 0 ? "0%" : `${(step / totalSteps) * 100}%`;
 
   return (
     <div>

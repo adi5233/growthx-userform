@@ -10,12 +10,15 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     backgroundColor: "#000000",
     display: "flex",
-    flexDirection: "column", // Arrange children vertically
-    alignItems: "center", // Center children horizontally
+    flexDirection: "column",
+    alignItems: "center",
   },
   headerContainer: {
     height: "auto",
     width: "100%",
+    position: "fixed",
+    top: 0,
+    left: 0,
   },
   formContainer: {
     flex: 1,
